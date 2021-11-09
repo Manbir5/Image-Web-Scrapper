@@ -2,7 +2,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-def imagedownloader(url,folder):
+def image_downloader(url,folder):
     try:
         os.mkdir(os.path.join(os.getcwd(), folder))
     except:
