@@ -6,7 +6,7 @@ def image_downloader(url,folder):
     try:
         os.mkdir(os.path.join(os.getcwd(), folder))
     except:
-        print("Error, did not work. Please use another url")
+        print("Folder name might already exist")
 
     os.chdir(os.path.join(os.getcwd(), folder))
 
