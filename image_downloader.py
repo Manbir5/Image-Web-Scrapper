@@ -54,7 +54,7 @@ def on_modified(event):
         try:
             name = image_downloader(url,"images")
         except:
-            current_dir = os.getcwd()
+            os.chdir(current_dir)
             name = "ERROR Please enter a valid site. This request was not successful"
         if name == "Invalid":
             string_to_print = "ERROR: Please enter a valid site. This request was not successful"
