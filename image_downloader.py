@@ -27,18 +27,24 @@ def image_downloader(url,folder):
 
     for element in images:
         link = element["src"]
-        if int(element["width"]) > 90 and int(element["height"]) > 90 and link[-3:] != "svg":
+        if int(element["width"]) > 90 and int(element["height"]) > 90:
             if link.startswith("//"):
                 link = "http:" + link
             alt = element["alt"]
             if alt == "" or alt is None:
                 alt = folder + str(item)
-            with open(alt.replace(" ", "_").replace("/", "") + '.jpg', 'wb') as file:
-                image_request = requests.get(link)
-                file.write(image_request.content)
-                file.close()
+            if link[-3:] == "svg":
+                with open(alt.replace(" ", "_").replace("/", "") + '.svg', 'wb') as file:
+                    image_request = requests.get(link)
+                    file.write(image_request.content)
+            else:
+                with open(alt.replace(" ", "_").replace("/", "") + '.jpg', 'wb') as file:
+                    image_request = requests.get(link)
+                    file.write(image_request.content)
+            file.close()
             os.chdir(current_dir)
             return alt
+
     os.chdir(current_dir)
     invalid = "Invalid"
     return invalid
