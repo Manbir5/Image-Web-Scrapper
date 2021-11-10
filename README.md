@@ -14,9 +14,9 @@ How to use:
 3)  Run the program. This program will run continuously. 
 4)  Append to the current image.txt file any urls that contain pictures in a new line. 
 5)  The program will download the first picture that is larger than 90 px x 90 px from that site. It will create a new folder in its existing directory called images. The picture will be downloaded there.
-6) The program will write the file name in a new line on the same images.txt file.
+6) The program will write the file name in a new line on the same images.txt file. If an error has occured, an error message will be written instead. 
 7) Repeat as needed. Close the program manually after completion.
 
-For example, this program can be used with the url - https://naturedestinations.ca/canadas-natural-landscapes/.
+For example, this program can be used with the url - https://naturedestinations.ca/canadas-natural-landscapes/. It also works with any Wikipedia page. 
 
-This program does not work for Wikipedia due to the format of their image urls. 
+This program will not work for websites where the images are in a .svg format. 
