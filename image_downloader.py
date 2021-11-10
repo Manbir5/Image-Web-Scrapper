@@ -5,7 +5,7 @@ from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 import time
 from random import randrange
-
+import sys
 
 def image_downloader(url,folder):
 
@@ -29,6 +29,8 @@ def image_downloader(url,folder):
     for element in images:
         if int(element["width"]) > 90 and int(element["height"]) > 90:
             link = element["src"]
+            if link.startswith("//"):
+                link = "http:" + link
             alt = element["alt"]
             if alt == "" or alt is None:
                 alt = folder + str(item)
