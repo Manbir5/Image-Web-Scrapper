@@ -44,6 +44,7 @@ def image_downloader(url,folder):
     return invalid
 
 def on_modified(event):
+    current_dir = os.getcwd()
     with open(os.path.join(os.getcwd(), "images.txt"), "r") as file2:
         for line in file2:
             pass
@@ -53,6 +54,7 @@ def on_modified(event):
         try:
             name = image_downloader(url,"images")
         except:
+            current_dir = os.getcwd()
             name = "ERROR Please enter a valid site. This request was not successful"
         if name == "Invalid":
             string_to_print = "ERROR: Please enter a valid site. This request was not successful"
