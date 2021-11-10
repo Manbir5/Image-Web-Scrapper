@@ -5,7 +5,6 @@ from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 import time
 from random import randrange
-import sys
 
 def image_downloader(url,folder):
 
@@ -37,19 +36,12 @@ def image_downloader(url,folder):
             with open(alt.replace(" ", "_").replace("/", "") + '.jpg', 'wb') as file:
                 image_request = requests.get(link)
                 file.write(image_request.content)
-                print("Writing: ", alt)
                 file.close()
             os.chdir(current_dir)
             return alt
+    os.chdir(current_dir)
     invalid = "Invalid"
     return invalid
-
-if __name__ =="__main__":
-    patterns = ["*images.txt"]
-    ignore_patterns = None
-    ignore_directories = False
-    case_sensitive = True
-    my_event_handler = PatternMatchingEventHandler(patterns,ignore_patterns,ignore_directories,case_sensitive)
 
 def on_modified(event):
     with open(os.path.join(os.getcwd(), "images.txt"), "r") as file2:
@@ -58,10 +50,23 @@ def on_modified(event):
         url = line
     file2.close()
     if "http" in url:
-        name = image_downloader(url,"images")
+        try:
+            name = image_downloader(url,"images")
+        except:
+            name = "ERROR Please enter a valid site. This request was not successful"
+        if name == "Invalid":
+            string_to_print = "ERROR: Please enter a valid site. This request was not successful"
+            name = string_to_print
         with open("./images.txt", "a") as file3:
             file3.write("\n" + name)
         file3.close()
+
+if __name__ =="__main__":
+    patterns = ["*images.txt"]
+    ignore_patterns = None
+    ignore_directories = False
+    case_sensitive = True
+    my_event_handler = PatternMatchingEventHandler(patterns,ignore_patterns,ignore_directories,case_sensitive)
 
 
 my_event_handler.on_modified = on_modified
