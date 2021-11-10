@@ -26,8 +26,8 @@ def image_downloader(url,folder):
     item = (randrange(10000))
 
     for element in images:
-        if int(element["width"]) > 90 and int(element["height"]) > 90:
-            link = element["src"]
+        link = element["src"]
+        if int(element["width"]) > 90 and int(element["height"]) > 90 and link[-3:] != "svg":
             if link.startswith("//"):
                 link = "http:" + link
             alt = element["alt"]
