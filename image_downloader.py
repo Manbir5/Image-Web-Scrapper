@@ -46,6 +46,7 @@ def image_downloader(url,folder):
 
 def on_modified(event):
     current_dir = os.getcwd()
+    line = ""
     with open(os.path.join(os.getcwd(), "images.txt"), "r") as file2:
         for line in file2:
             pass
