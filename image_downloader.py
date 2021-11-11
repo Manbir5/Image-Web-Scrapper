@@ -36,6 +36,7 @@ def image_downloader(url,folder):
             with open(alt.replace(" ", "_").replace("/", "") + '.jpg', 'wb') as file:
                 image_request = requests.get(link)
                 file.write(image_request.content)
+            alt = alt.replace("", "_").replace("/", "")
             file.close()
             os.chdir(current_dir)
             return alt
