@@ -33,6 +33,8 @@ def image_downloader(url,folder):
             alt = element["alt"]
             if alt == "" or alt is None:
                 alt = folder + str(item)
+            if "png" in alt or "jpg" in alt:
+                alt = alt[:-4]
             with open(alt.replace(" ", "_").replace("/", "") + '.jpg', 'wb') as file:
                 image_request = requests.get(link)
                 file.write(image_request.content)
