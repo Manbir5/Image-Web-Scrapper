@@ -1,1 +1,8 @@
 This is the file that can be edited for requests
+https://en.wikipedia.org/wiki/Borderlands_2
+Borderlands_2_cover_art
+asdsad
+https://en.wikipedia.org/wiki/Helldivers
+Helldivers_art
+https://en.wikipedia.org/wiki/Helldiver
+ERROR: Please enter a valid site. This request was not successful
